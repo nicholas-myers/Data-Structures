@@ -42,8 +42,8 @@ for i in things:
 # first loop will get to third index and see list -
 #  should then loop through that list
 # check to see if the index type is list if index type is list then start new for loop
-# print each element ValueError
-
+# print each element
+# create a function that loops and calls itself if the index type is a list
 stretch_list = ['Bob', 'Slack', ['reddit', '89', 101, ['alacritty', '(brackets)', 5, 375]], 0, ['{slice, owned}'], 22]
 
 # for i in stretch_list:
