@@ -36,19 +36,22 @@ class LinkedList:
             
     def contains(self, value):
         # if get to end of list and value 
+        
         if not self.head:
             return False
         current = self.head
+        # current exists and is truthy so it will loop through the whole list
         while current:
+            # if the value becomes current then return true
             if current.get_value() is value:
                 return True
             current = current.get_next()
-            
+        # if we get to the end and did not find value return false
         return False
         
         
     def remove_head(self):
-        
+        # if there is no list stop the function
         if self.head is None and self.tail is None:
                 return
         if not self.head.get_next():
@@ -64,6 +67,7 @@ class LinkedList:
         return val
         
     def get_max(self):
+        # if there is no list stop the function
         if not self.head:
             return None
         # reference to the largest value we've seen so far
