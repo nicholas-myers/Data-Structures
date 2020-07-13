@@ -12,11 +12,13 @@ class Node:
     def set_next(self, new_next):
         self.next = new_next
     
-# ll = Node(1)
-# ll.set_next(Node(2))
-# ll.next.set_next(Node(3))
-# ll.next.next.set_next(Node(4))
-# ll.next.next.next.set_next(Node(5))
+ll = Node(1)
+ll.set_next(Node(2))
+ll.next.set_next(Node(3))
+ll.next.next.set_next(Node(4))
+ll.next.next.next.set_next(Node(5))
+
+print(type(ll))
         
 class LinkedList:
     def __init__(self):
@@ -33,21 +35,48 @@ class LinkedList:
             self.tail = new_node
             
     def contains(self, value):
-        
+        # if get to end of list and value 
+        if not self.head:
+            return False
         current = self.head
-        while current is not value:
-            current = current.get_next()
-            if current.get_value() == value:
+        while current:
+            if current.get_value() is value:
                 return True
-            
-            
-            
-    def remove_tail(self):
-        if self.head is None and self.tail is None:
-            return
-        current = self.head
-        while current.get_next() is not self.tail:
             current = current.get_next()
-        val = self.tail.get_value()
-        self.tail = current
+            
+        return False
+        
+        
+    def remove_head(self):
+        
+        if self.head is None and self.tail is None:
+                return
+        if not self.head.get_next():
+            head = self.head 
+            # delete the linked list's head reference 
+            self.head = None
+            # also delete the linked list's tail reference 
+            self.tail = None 
+            return head.get_value()
+        val = self.head.get_value()
+        # set self.head to the Node after the head 
+        self.head = self.head.get_next()
         return val
+        
+    def get_max(self):
+        if not self.head:
+            return None
+        # reference to the largest value we've seen so far
+        max_value = self.head.get_value()
+        # reference to our current node as we traverse the list
+        current = self.head.get_next()
+        # check to see if we're still at a valid list node
+        while current:
+            # check to see if the current value is greater than the max_value
+            if current.get_value() > max_value:
+                # if so, update our max_value variable
+                max_value = current.get_value()
+            # update the current node to the next node in the list
+            current = current.get_next()
+        return max_value
+

@@ -45,6 +45,7 @@ for i in things:
 # print each element ValueError
 
 stretch_list = ['Bob', 'Slack', ['reddit', '89', 101, ['alacritty', '(brackets)', 5, 375]], 0, ['{slice, owned}'], 22]
+
 # for i in stretch_list:
 #   if type(i) is list:
 #     for v in i:
@@ -58,13 +59,12 @@ stretch_list = ['Bob', 'Slack', ['reddit', '89', 101, ['alacritty', '(brackets)'
 
 # check each index type is list or not if index type is list start new loop
 # create a function that loops and calls itself if the index type is a list
+print("**********STRETCH*********")
 def loop(value):
   for i in value:
     if type(i) is list:
       loop(i)
     else:
-      print(f"{i}")
+      print(f"\n{i}")
 
 loop(stretch_list)
-
-# 
