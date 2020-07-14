@@ -66,6 +66,25 @@ class LinkedList:
         self.head = self.head.get_next()
         return val
         
+    def remove_tail(self):
+        if self.head is None and self.tail is None:
+            return
+        if self.head is self.tail:
+            value = self.head.get_value()
+            self.head = None
+            self.tail = None
+            return value
+        current = self.head 
+
+        while current.get_next() is not self.tail:
+            current = current.get_next()
+
+        val = self.tail.get_value() 
+        # move self.tail to the Node right before
+        self.tail = current
+        self.tail.next = None
+        return val
+    
     def get_max(self):
         # if there is no list stop the function
         if not self.head:
