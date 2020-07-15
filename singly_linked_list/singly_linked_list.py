@@ -14,13 +14,14 @@ class Node:
     
     def __str__(self):
         return f"{self.value}, {self.next}"
-ll = Node(1)
-ll.set_next(Node(2))
-ll.next.set_next(Node(3))
-ll.next.next.set_next(Node(4))
-ll.next.next.next.set_next(Node(5))
+    
+# ll = Node(1)
+# ll.set_next(Node(2))
+# ll.next.set_next(Node(3))
+# ll.next.next.set_next(Node(4))
+# ll.next.next.next.set_next(Node(5))
 
-print(type(ll))
+# print(type(ll))
         
 class LinkedList:
     def __init__(self):
