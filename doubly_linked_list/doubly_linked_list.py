@@ -71,15 +71,14 @@ class DoublyLinkedList:
     """
     def add_to_tail(self, value):
         new_node = ListNode(value)
+        self.length += 1
         if self.tail is None and self.head is None:
             self.head = new_node
-            self.tail = new_node
-            self.length += 1
+            self.tail = new_node           
         else:
             new_node.prev = self.tail
             self.tail.next = new_node
             self.tail = new_node
-            self.length += 1
             
             
             
@@ -131,19 +130,23 @@ class DoublyLinkedList:
     order of the other elements of the List.
     """
     def delete(self, node):
+        # if the list has only one item delete it and set the length to 0
         if self.head is node and self.tail is node:
             self.head = None
             self.tail = None
             self.length = 0
+        # if the head is == to the node and there is more than one item in the list
         elif self.head is node and self.tail is not node:
             self.head.next.prev = None
             self.head = self.head.next
             self.length -= 1
+        # if the target is in the middle
         elif self.head is not node and self.tail is not node:
             node.prev.next = node.next
             node.next.prev = node.prev
             node = None
             self.length -= 1
+        # if the target is the tail
         elif self.tail is node:
             self.remove_from_tail()
             
