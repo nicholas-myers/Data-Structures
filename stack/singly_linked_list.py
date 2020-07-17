@@ -14,14 +14,13 @@ class Node:
     
     def __str__(self):
         return f"{self.value}, {self.next}"
-    
-# ll = Node(1)
-# ll.set_next(Node(2))
-# ll.next.set_next(Node(3))
-# ll.next.next.set_next(Node(4))
-# ll.next.next.next.set_next(Node(5))
+ll = Node(1)
+ll.set_next(Node(2))
+ll.next.set_next(Node(3))
+ll.next.next.set_next(Node(4))
+ll.next.next.next.set_next(Node(5))
 
-# print(type(ll))
+print(type(ll))
         
 class LinkedList:
     def __init__(self):
@@ -67,6 +66,25 @@ class LinkedList:
         self.head = self.head.get_next()
         return val
         
+    def remove_tail(self):
+        if self.head is None and self.tail is None:
+            return
+        if self.head is self.tail:
+            value = self.head.get_value()
+            self.head = None
+            self.tail = None
+            return value
+        current = self.head 
+
+        while current.get_next() is not self.tail:
+            current = current.get_next()
+
+        val = self.tail.get_value() 
+        # move self.tail to the Node right before
+        self.tail = current
+        self.tail.next = None
+        return val
+    
     def get_max(self):
         # if there is no list stop the function
         if not self.head:

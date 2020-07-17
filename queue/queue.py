@@ -13,16 +13,55 @@ return elements in First In First Out order.
 Stretch: What if you could only use instances of your Stack class to implement the Queue?
          What would that look like? How many Stacks would you need? Try it!
 """
+
+
+# class Queue:
+#     def __init__(self):
+#         self.size = 0
+#         self.storage = []
+    
+#     def __len__(self):
+#         return len(self.storage)
+
+#     def enqueue(self, value):
+#         return self.storage.append(value)
+
+#     def dequeue(self):
+#         if len(self.storage) < 1:
+#             return None
+#         return self.storage.pop()
+
+
+from singly_linked_list import LinkedList
+
 class Queue:
     def __init__(self):
+        # super().__init__(self)
         self.size = 0
-        # self.storage = ?
-    
+        self.storage = LinkedList()
+        
     def __len__(self):
-        pass
+        return self.size
 
     def enqueue(self, value):
-        pass
+        self.storage.add_to_tail(value)
+        self.size = self.size + 1
 
     def dequeue(self):
-        pass
+        if self.size > 0:
+            self.size = self.size - 1
+            return self.storage.remove_head()
+        return None
+    
+    def __str__(self):
+        return f"{self.storage}"
+
+# queue = Queue()
+# queue.enqueue("Item 1")
+# queue.enqueue("Item 2")
+# queue.enqueue("Item 3")
+# queue.enqueue("Item 4")
+# queue.enqueue("Item 5")
+
+
+# print(queue.__str__())
